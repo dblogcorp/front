@@ -5,13 +5,14 @@ Dblog's front
 - Gulp
 ```
 $ gulp
+$ gulp watch
 ```
 - Webpack
 ```
-$ webpack --env.app=sso/personal/web
+$ webpack --env.app=sso
 ```
 
 - Start
 ```
-$ npm start
+$ npm run sso-start
 ```

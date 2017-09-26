@@ -1,13 +1,18 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const ROOT = path.resolve(__dirname);
 
 module.exports = (env) => {
   const appName = env.app;
   
   return {
-    entry: `./src/apps/${appName}/index.tsx`,
+    entry: `${ROOT}/src/apps/${appName}/index.tsx`,
     output: {
-      path: `${__dirname}/dist/${appName}`,
-      filename: "bundle.[chunkhash:8].js"
+      path: `${ROOT}/dist/${appName}`,
+      filename: "bundle.[chunkhash:8].js",
+      publicPath: `/dist/${appName}`
     },
     
     // Enable sourcemaps for debugging webpack's output.
@@ -33,6 +38,13 @@ module.exports = (env) => {
           }
         }
       ]
-    }
+    },
+
+    plugins: [
+      new HtmlWebpackPlugin({  // Also generate a test.html 
+        filename: `${ROOT}/dist/src/apps/${appName}/index.html`,
+        template: `${ROOT}/dist/src/apps/${appName}/index.html`,
+      })
+    ]
   }
 };
