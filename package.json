@@ -17,7 +17,8 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "webpack": "^3.6.0"
   },
   "devDependencies": {
     "@types/gulp": "^4.0.4",
@@ -35,6 +36,8 @@
     "yargs": "^9.0.1"
   },
   "scripts": {
-    "start": "node dist/src/server/index.js"
+    "sso-start": "APP=sso node dist/src/server/index.js",
+    "web-start": "APP=web node dist/src/server/index.js",
+    "personal-start": "APP=personal node dist/src/server/index.js"
   }
 }

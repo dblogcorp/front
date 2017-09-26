@@ -7,11 +7,12 @@
     "target": "es6",
     "jsx": "react"
   },
+  "compileOnSave": true,
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module"
   },
   "include": [
-    "./src/**/*"
+    "./src/server/*"
   ]
 }

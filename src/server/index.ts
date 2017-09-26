@@ -2,10 +2,12 @@ const http = require('http');
 const debug = require('debug');
 const path = require('path');
 
-import App from './App';
+import { App } from './App';
 
 const port = formatPort(process.env.PORT || 3000);
-App.set('port', port);
+
+const app = new App(process.env.APP);
+app.express.set('port', port);
 
 function formatPort(val: number | string): number | string | boolean {
   let port: number = (typeof val === 'string') ? parseInt(val, 10) : val;
@@ -46,7 +48,7 @@ function onListening(): void {
   debug(`Listening on ${addr}`);
 }
 
-const server = http.createServer(App);
+const server = http.createServer(app.express);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
